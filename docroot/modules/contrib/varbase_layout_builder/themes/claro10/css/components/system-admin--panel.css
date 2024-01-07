@@ -1,0 +1,20 @@
+#layout-builder-modal .panel,.media-library-widget-modal .panel,form.media-form .panel {
+  margin-block: 1em 3em;
+  padding: 0;
+  border-block-end: .0625em solid var(--color-gray-200);
+}
+
+#layout-builder-modal .panel__title,.media-library-widget-modal .panel__title,form.media-form .panel__title {
+  margin: 0;
+  padding-block: .6666666667em;
+  padding-inline: 1.3333333333em;
+  background: var(--color-gray-050);
+  font-size: 1.125em;
+  line-height: 1.3333333333em;
+}
+
+#layout-builder-modal .panel__content,#layout-builder-modal .panel__description,.media-library-widget-modal .panel__content,.media-library-widget-modal .panel__description,form.media-form .panel__content,form.media-form .panel__description {
+  padding-block: 1em;
+  padding-inline: 1.5em;
+}
+

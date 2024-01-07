@@ -2,7 +2,6 @@
 
 namespace Drupal\stage_file_proxy\EventSubscriber;
 
-use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
@@ -13,12 +12,16 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * Stage file proxy subscriber for controller requests.
  *
- * @deprecated in 2.1, will be removed in 3.0.
+ * @deprecated in stage_file_proxy:2.1.0 and is removed from stage_file_proxy:3.0.0.
+ *   Use StageFileProxySubscriber instead.
+ *
+ * @see https://www.drupal.org/project/stage_file_proxy/issues/3282542
  */
 class ProxySubscriber implements EventSubscriberInterface {
 
@@ -145,7 +148,7 @@ class ProxySubscriber implements EventSubscriberInterface {
     // system path, and defaults to the local public file system path.
     $origin_dir = $config->get('origin_dir') ?? '';
     $remote_file_dir = trim($origin_dir);
-    if (!empty($remote_file_dir)) {
+    if ($remote_file_dir === '') {
       $remote_file_dir = $file_dir;
     }
 
@@ -182,6 +185,7 @@ class ProxySubscriber implements EventSubscriberInterface {
       $query_parameters = UrlHelper::filterQueryParameters($query);
       $options = [
         'verify' => $config->get('verify'),
+        'headers' => $this->createProxyHeadersArray($config->get('proxy_headers')),
       ];
 
       if ($config->get('hotlink')) {
@@ -219,6 +223,27 @@ class ProxySubscriber implements EventSubscriberInterface {
     // Priority 240 is after ban middleware but before page cache.
     $events[KernelEvents::REQUEST][] = ['checkFileOrigin', 240];
     return $events;
+  }
+
+  /**
+   * Helper function to generate HTTP headers array.
+   *
+   * @param string $headers_string
+   *   Header string to break apart.
+   *
+   * @return array
+   *   Any array for proxy headers.
+   */
+  protected function createProxyHeadersArray(string $headers_string) {
+    $lines = explode("\n", $headers_string);
+    $headers = [];
+    foreach ($lines as $line) {
+      $header = explode('|', $line);
+      if (count($header) > 1) {
+        $headers[$header[0]] = $header[1];
+      }
+    }
+    return $headers;
   }
 
 }

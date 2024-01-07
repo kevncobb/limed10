@@ -18,7 +18,6 @@ abstract class PanelsBlockConfigureFormBase extends FormBase {
 
   use ContextAwarePluginAssignmentTrait;
   use CachedValuesGetterTrait;
-  use PanelsStyleTrait;
 
   /**
    * Tempstore factory.
@@ -126,8 +125,6 @@ abstract class PanelsBlockConfigureFormBase extends FormBase {
     $form_state->setTemporaryValue('gathered_contexts', $contexts);
 
     $this->block = $this->prepareBlock($block_id);
-    $settings = $this->block->getConfiguration();
-    $form += $this->getCssStyleForm($settings);
     $form_state->set('machine_name', $machine_name);
     $form_state->set('block_id', $this->block->getConfiguration()['uuid']);
 
@@ -189,9 +186,6 @@ abstract class PanelsBlockConfigureFormBase extends FormBase {
 
     $configuration = $this->block->getConfiguration();
     $configuration['region'] = $form_state->getValue('region');
-    $configuration['css_classes'] = preg_split('/\s+/', trim($form_state->getValue('css_classes')));
-    $configuration['html_id'] = $form_state->getValue('html_id');
-    $configuration['css_styles'] = $form_state->getValue('css_styles');
     $this->getVariantPlugin()->updateBlock($this->block->getConfiguration()['uuid'], $configuration);
 
     $cached_values = $this->getCachedValues($this->tempstore, $this->tempstore_id, $form_state->get('machine_name'));

@@ -3,7 +3,7 @@ type: theme
 base theme: claro
 description: "A modern administration theme for Varbase standard websites. Based on the Claro Drupal core admin theme."
 alt text: "Screenshot of Vartheme Claro, Varbase administration theme."
-core_version_requirement: ~9.5.0 || ~10.1.0
+core_version_requirement: ~9.5.0 || ~10
 package: "Varbase"
 regions:
   header: "Header"
@@ -174,9 +174,6 @@ libraries-extend:
     - claro/media_library.theme
   media_library/widget:
     - claro/media_library.theme
-
-quickedit_stylesheets:
-  - ../../../core/themes/claro/css/components/quickedit.css
 
 ckeditor_stylesheets: false
 ckeditor5-stylesheets: false

@@ -408,6 +408,16 @@ class PhpDocParser
 					$tagValue = $this->parseMixinTagValue($tokens);
 					break;
 
+				case '@psalm-require-extends':
+				case '@phpstan-require-extends':
+					$tagValue = $this->parseRequireExtendsTagValue($tokens);
+					break;
+
+				case '@psalm-require-implements':
+				case '@phpstan-require-implements':
+					$tagValue = $this->parseRequireImplementsTagValue($tokens);
+					break;
+
 				case '@deprecated':
 					$tagValue = $this->parseDeprecatedTagValue($tokens);
 					break;
@@ -682,24 +692,34 @@ class PhpDocParser
 			$tokens->dropSavePoint(); // because of ConstFetchNode
 		}
 
-		$exception = new ParserException(
-			$tokens->currentTokenValue(),
-			$tokens->currentTokenType(),
-			$tokens->currentTokenOffset(),
-			Lexer::TOKEN_IDENTIFIER,
-			null,
-			$tokens->currentTokenLine()
-		);
+		$currentTokenValue = $tokens->currentTokenValue();
+		$currentTokenType = $tokens->currentTokenType();
+		$currentTokenOffset = $tokens->currentTokenOffset();
+		$currentTokenLine = $tokens->currentTokenLine();
 
 		try {
 			$constExpr = $this->doctrineConstantExprParser->parse($tokens, true);
 			if ($constExpr instanceof Ast\ConstExpr\ConstExprArrayNode) {
-				throw $exception;
+				throw new ParserException(
+					$currentTokenValue,
+					$currentTokenType,
+					$currentTokenOffset,
+					Lexer::TOKEN_IDENTIFIER,
+					null,
+					$currentTokenLine
+				);
 			}
 
 			return $constExpr;
 		} catch (LogicException $e) {
-			throw $exception;
+			throw new ParserException(
+				$currentTokenValue,
+				$currentTokenType,
+				$currentTokenOffset,
+				Lexer::TOKEN_IDENTIFIER,
+				null,
+				$currentTokenLine
+			);
 		}
 	}
 
@@ -865,6 +885,20 @@ class PhpDocParser
 		$type = $this->typeParser->parse($tokens);
 		$description = $this->parseOptionalDescription($tokens, true);
 		return new Ast\PhpDoc\MixinTagValueNode($type, $description);
+	}
+
+	private function parseRequireExtendsTagValue(TokenIterator $tokens): Ast\PhpDoc\RequireExtendsTagValueNode
+	{
+		$type = $this->typeParser->parse($tokens);
+		$description = $this->parseOptionalDescription($tokens, true);
+		return new Ast\PhpDoc\RequireExtendsTagValueNode($type, $description);
+	}
+
+	private function parseRequireImplementsTagValue(TokenIterator $tokens): Ast\PhpDoc\RequireImplementsTagValueNode
+	{
+		$type = $this->typeParser->parse($tokens);
+		$description = $this->parseOptionalDescription($tokens, true);
+		return new Ast\PhpDoc\RequireImplementsTagValueNode($type, $description);
 	}
 
 	private function parseDeprecatedTagValue(TokenIterator $tokens): Ast\PhpDoc\DeprecatedTagValueNode
@@ -1117,15 +1151,13 @@ class PhpDocParser
 	{
 		if ($tokens->isCurrentTokenType(Lexer::TOKEN_THIS_VARIABLE)) {
 			$parameter = '$this';
-			$requirePropertyOrMethod = true;
 			$tokens->next();
 		} else {
 			$parameter = $tokens->currentTokenValue();
-			$requirePropertyOrMethod = false;
 			$tokens->consumeTokenType(Lexer::TOKEN_VARIABLE);
 		}
 
-		if ($requirePropertyOrMethod || $tokens->isCurrentTokenType(Lexer::TOKEN_ARROW)) {
+		if ($tokens->isCurrentTokenType(Lexer::TOKEN_ARROW)) {
 			$tokens->consumeTokenType(Lexer::TOKEN_ARROW);
 
 			$propertyOrMethod = $tokens->currentTokenValue();

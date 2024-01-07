@@ -1,4 +1,4 @@
-[![Vardot](https://circleci.com/gh/Vardot/varbase/tree/9.0.x.svg?style=shield)](https://app.circleci.com/pipelines/github/Vardot/varbase/707/workflows/a3da7828-b87e-4995-b155-4cb52d77c5aa) Varbase 9.0.14
+[![Vardot](https://circleci.com/gh/Vardot/varbase/tree/9.0.x.svg?style=shield)](https://app.circleci.com/pipelines/github/Vardot/varbase/807/workflows/97595ba6-aff9-4e92-8d99-b0d866794f86) Varbase 9.0.17
 
 [![](https://www.drupal.org/files/styles/grid-3/public/project-images/Medium-Logo%20Color%20with%20padding.png)](https://www.drupal.org/project/varbase)
 
@@ -19,9 +19,9 @@ in every project.
 * Comes with a lot of needed functionalities/modules for every-day Drupal site.
 * [Tested, tested, and tested.](https://app.circleci.com/pipelines/github/Vardot/varbase)
 
-Starting a new project? Consider Varbase for Drupal 9.
-Installing Varbase 9.0.x comes with several extra automated installation
-steps, to take full advantage of Varbase, other than the Drupal 9 installation
+Starting a new project? Consider **Varbase** for **Drupal 9**.
+Installing **Varbase `9.0.x`** comes with several extra automated installation
+steps, to take full advantage of **Varbase**, other than the **Drupal 9** installation
 instructions.
 
 

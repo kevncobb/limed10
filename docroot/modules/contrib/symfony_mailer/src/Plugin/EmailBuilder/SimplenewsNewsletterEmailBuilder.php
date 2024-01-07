@@ -3,8 +3,8 @@
 namespace Drupal\symfony_mailer\Plugin\EmailBuilder;
 
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\simplenews\SubscriberInterface;
 use Drupal\simplenews\Entity\Newsletter;
+use Drupal\simplenews\SubscriberInterface;
 use Drupal\symfony_mailer\Address;
 use Drupal\symfony_mailer\EmailFactoryInterface;
 use Drupal\symfony_mailer\EmailInterface;
@@ -74,14 +74,22 @@ class SimplenewsNewsletterEmailBuilder extends SimplenewsEmailBuilderBase {
    */
   public function build(EmailInterface $email) {
     parent::build($email);
-    $email->setBodyEntity($email->getParam('issue'), 'email_html')
-      ->addTextHeader('Precedence', 'bulk')
+    $email->addTextHeader('Precedence', 'bulk')
       ->setVariable('opt_out_hidden', !$email->getEntity()->isAccessible());
 
     // @todo Create SubscriberInterface::getUnsubscriberUrl().
     if ($unsubscribe_url = \Drupal::token()->replace('[simplenews-subscriber:unsubscribe-url]', $email->getParams(), ['clear' => TRUE])) {
       $email->addTextHeader('List-Unsubscribe', "<$unsubscribe_url>");
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preRender(EmailInterface $email) {
+    // The preRender-phase is aware of Subscribers preffered language.
+    // By setting the body here, we get the right language!
+    $email->setBodyEntity($email->getParam('issue'), 'email_html');
   }
 
   /**

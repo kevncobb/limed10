@@ -1,0 +1,37 @@
+#layout-builder-modal .views-exposed-form.views-exposed-form,.media-library-widget-modal .views-exposed-form.views-exposed-form,form.media-form .views-exposed-form.views-exposed-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: var(--space-l);
+  padding: var(--space-xs) var(--space-l) var(--space-l) var(--space-l);
+  border: var(--details-border-size) solid var(--details-border-color);
+  border-radius: var(--details-border-size-radius);
+  background-color: var(--color-white);
+  box-shadow: var(--details-box-shadow);
+}
+
+#layout-builder-modal .views-exposed-form--preview.views-exposed-form--preview,.media-library-widget-modal .views-exposed-form--preview.views-exposed-form--preview,form.media-form .views-exposed-form--preview.views-exposed-form--preview {
+  margin-top: 0;
+}
+
+#layout-builder-modal .views-exposed-form__item.views-exposed-form__item,.media-library-widget-modal .views-exposed-form__item.views-exposed-form__item,form.media-form .views-exposed-form__item.views-exposed-form__item {
+  max-width: 100%;
+  margin-block: var(--space-s) 0;
+  margin-inline: 0 var(--space-xs);
+}
+
+#layout-builder-modal .views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions,.media-library-widget-modal .views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions,form.media-form .views-exposed-form__item--preceding-actions.views-exposed-form__item--preceding-actions {
+  margin-inline-end: var(--space-m);
+}
+
+#layout-builder-modal .views-exposed-form__item--actions.views-exposed-form__item--actions .button,.media-library-widget-modal .views-exposed-form__item--actions.views-exposed-form__item--actions .button,form.media-form .views-exposed-form__item--actions.views-exposed-form__item--actions .button {
+  margin-block: 0;
+}
+
+#layout-builder-modal .views-exposed-form__item--actions.views-exposed-form__item--actions .button:last-child,.media-library-widget-modal .views-exposed-form__item--actions.views-exposed-form__item--actions .button:last-child,form.media-form .views-exposed-form__item--actions.views-exposed-form__item--actions .button:last-child {
+  margin-inline-end: 0;
+}
+
+#layout-builder-modal .views-exposed-form .form-item--no-label,#layout-builder-modal .views-exposed-form__item.views-exposed-form__item.views-exposed-form__item--actions,.media-library-widget-modal .views-exposed-form .form-item--no-label,.media-library-widget-modal .views-exposed-form__item.views-exposed-form__item.views-exposed-form__item--actions,form.media-form .views-exposed-form .form-item--no-label,form.media-form .views-exposed-form__item.views-exposed-form__item.views-exposed-form__item--actions {
+  margin-top: calc(var(--line-height-form-label) + var(--space-s) + var(--space-xs));
+}
+

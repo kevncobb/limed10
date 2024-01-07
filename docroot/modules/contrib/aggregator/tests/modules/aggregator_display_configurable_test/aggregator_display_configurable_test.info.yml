@@ -4,7 +4,7 @@ description: 'Support module for aggregator \Drupal\Core\Field\BaseFieldDefiniti
 package: Testing
 # version: VERSION
 
-# Information added by Drupal.org packaging script on 2022-10-22
-version: '1.0.2'
+# Information added by Drupal.org packaging script on 2023-11-10
+version: '1.1.4'
 project: 'aggregator'
-datestamp: 1666403576
+datestamp: 1699583096

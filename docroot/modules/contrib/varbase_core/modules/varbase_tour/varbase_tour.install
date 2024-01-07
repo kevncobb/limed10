@@ -8,13 +8,16 @@
 use Vardot\Entity\EntityDefinitionUpdateManager;
 use Vardot\Installer\ModuleInstallerFactory;
 
+// Include all helpers and updates.
+include_once __DIR__ . '/includes/helpers.inc';
+include_once __DIR__ . '/includes/updates.inc';
+
 /**
  * Implements hook_install().
  */
 function varbase_tour_install() {
 
-  // Processor for install: in varbase_tour.info.yml file using ModuleInstallerFactory.
-  // ---------------------------------------------------------------------------.
+  // Processor for install: in varbase_tour.info.yml file.
   ModuleInstallerFactory::installList('varbase_tour');
 
   // Install optional configs.
@@ -26,5 +29,8 @@ function varbase_tour_install() {
   \Drupal::classResolver()
     ->getInstanceFromDefinition(EntityDefinitionUpdateManager::class)
     ->applyUpdates();
+
+  // Add permissions.
+  ModuleInstallerFactory::addPermissions('varbase_tour');
 
 }

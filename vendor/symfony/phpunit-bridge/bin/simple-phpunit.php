@@ -262,7 +262,7 @@ if (!file_exists("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit") || $configurationH
     putenv("COMPOSER_ROOT_VERSION=$PHPUNIT_VERSION.99");
     $q = '\\' === \DIRECTORY_SEPARATOR && \PHP_VERSION_ID < 80000 ? '"' : '';
     // --no-suggest is not in the list to keep compat with composer 1.0, which is shipped with Ubuntu 16.04LTS
-    $exit = proc_close(proc_open("$q$COMPOSER install --no-dev --prefer-dist --no-progress $q", [], $p, getcwd()));
+    $exit = proc_close(proc_open("$q$COMPOSER update --no-dev --prefer-dist --no-progress $q", [], $p, getcwd()));
     putenv('COMPOSER_ROOT_VERSION'.(false !== $prevRoot ? '='.$prevRoot : ''));
     if ($prevCacheDir) {
         putenv("COMPOSER_CACHE_DIR=$prevCacheDir");
@@ -398,6 +398,9 @@ if ($components) {
         }
     }
 
+    $lastOutput = null;
+    $lastOutputTime = null;
+
     while ($runningProcs) {
         usleep(300000);
         $terminatedProcs = [];
@@ -407,6 +410,26 @@ if ($components) {
                 $terminatedProcs[$component] = $procStatus['exitcode'];
                 unset($runningProcs[$component]);
                 proc_close($proc);
+            }
+        }
+
+        if (!$terminatedProcs && 1 === count($runningProcs)) {
+            $component = key($runningProcs);
+
+            $output = file_get_contents("$component/phpunit.stdout");
+            $output .= file_get_contents("$component/phpunit.stderr");
+
+            if ($lastOutput !== $output) {
+                $lastOutput = $output;
+                $lastOutputTime = microtime(true);
+            } elseif (microtime(true) - $lastOutputTime > 60) {
+                echo "\033[41mTimeout\033[0m $component\n\n";
+
+                if ('\\' === \DIRECTORY_SEPARATOR) {
+                    exec(sprintf('taskkill /F /T /PID %d 2>&1', $procStatus['pid']), $output, $exitCode);
+                } else {
+                    proc_terminate(current($runningProcs));
+                }
             }
         }
 
