@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update for Varbase Search module.
+ */
+
+use Vardot\Installer\ModuleInstallerFactory;
+
+/**
+ * Implements hook_install().
+ */
+function varbase_search_install() {
+
+  // Processor for install: in varbase_search.info.yml file.
+  // ---------------------------------------------------------------------------.
+  ModuleInstallerFactory::installList('varbase_search');
+
+  // Install optional configs.
+  ModuleInstallerFactory::importConfigsFromScanedDirectory('varbase_search', '/^.*(settings.yml)$/i');
+
+  // Add permissions.
+  ModuleInstallerFactory::addPermissions('varbase_search');
+
+}
+
+/**
+ * Issue #3272294: Switch to use the Module Installer Factory.
+ *
+ * In the Varbase Search module.
+ */
+function varbase_search_update_90001() {
+  // Set the weight of the module after installation of list of modules.
+  // To make sure that any hook or event subscriber worker after all used modules.
+  ModuleInstallerFactory::setModuleWeightAfterInstallation('varbase_search');
+}

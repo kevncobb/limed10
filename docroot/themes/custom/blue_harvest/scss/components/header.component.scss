@@ -1,0 +1,15 @@
+// Header component style.
+// -----------------------------------------------------------------------------
+@import "../../node_modules/bootstrap/scss/functions";  // Bootstrap functions.
+@import "../../node_modules/bootstrap/scss/mixins";     // Bootstrap mixins.
+@import "../variables";                   // blue_harvest variables.
+@import "../mixins";                      // blue_harvest mixins.
+// -----------------------------------------------------------------------------
+
+hr.short-green {
+  border-top: 0;
+  display: block;
+  width: 67px;
+  height: 5px;
+  background-color: #73AB42;
+}

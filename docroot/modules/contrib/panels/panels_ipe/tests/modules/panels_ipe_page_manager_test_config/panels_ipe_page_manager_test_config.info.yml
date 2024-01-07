@@ -1,0 +1,7 @@
+name: 'Page Manager test configuration for Panels IPE'
+type: module
+description: 'Provides default configuration to test Page Manager.'
+package: Testing
+dependencies:
+  - page_manager:page_manager
+  - panels:panels_ipe

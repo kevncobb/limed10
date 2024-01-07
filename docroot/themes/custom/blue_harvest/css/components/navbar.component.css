@@ -1,0 +1,121 @@
+.font-size-lg {
+  font-size: 1.375rem;
+}
+
+.font-size-sm {
+  font-size: 0.9625rem;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-nav.ml-auto .dropdown-menu {
+    right: 50%;
+    left: auto;
+    -webkit-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+}
+
+[dir="rtl"] .navbar-nav.ml-auto .dropdown-menu {
+  right: auto;
+  left: 0;
+}
+
+@media screen and (min-width: 576px) and (min-width: 768px) {
+  .navbar-nav.ml-sm-auto .dropdown-menu {
+    right: 50%;
+    left: auto;
+    -webkit-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+}
+
+@media (min-width: 576px) {
+  [dir="rtl"] .navbar-nav.ml-sm-auto .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  .navbar-nav.ml-md-auto .dropdown-menu {
+    right: 50%;
+    left: auto;
+    -webkit-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .navbar-nav.ml-md-auto .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 992px) and (min-width: 768px) {
+  .navbar-nav.ml-lg-auto .dropdown-menu {
+    right: 50%;
+    left: auto;
+    -webkit-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+}
+
+@media (min-width: 992px) {
+  [dir="rtl"] .navbar-nav.ml-lg-auto .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) and (min-width: 768px) {
+  .navbar-nav.ml-xl-auto .dropdown-menu {
+    right: 50%;
+    left: auto;
+    -webkit-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+}
+
+@media (min-width: 1200px) {
+  [dir="rtl"] .navbar-nav.ml-xl-auto .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}
+
+#navbar-main {
+  z-index: 1;
+}
+
+@media screen and (min-width: 980px) {
+  .nav-item .nav-link {
+    position: relative;
+    -webkit-transition: color 0.325s ease;
+    -o-transition: color 0.325s ease;
+    transition: color 0.325s ease;
+  }
+  .nav-item .nav-link::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 2px;
+    content: "";
+    -webkit-transition: width 0.325s ease;
+    -o-transition: width 0.325s ease;
+    transition: width 0.325s ease;
+    border: none;
+    background: #003c71;
+  }
+  .nav-item .nav-link:focus::after,
+  .nav-item .nav-link:hover::after {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/paragraphs_asymmetric_translation_widgets",
+  "description": "Extends the paragraphs field widgets to support asymmetric translations.",
+  "type": "drupal-module",
+  "license": "GPL-2.0",
+  "require": {
+    "drupal/paragraphs": "~1.15"
+  },
+  "require-dev": {
+    "drupal/entity_browser": "2.x-dev",
+    "drupal/entity_usage": "2.x-dev",
+    "drupal/search_api": "~1.0"
+  }
+}

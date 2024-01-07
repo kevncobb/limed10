@@ -1,0 +1,36 @@
+.font-size-lg {
+  font-size: 1.375rem;
+}
+
+.font-size-sm {
+  font-size: 0.9625rem;
+}
+
+/* Insert your blue_harvest header custom SASS styling. */
+header.navbar {
+  padding: 0 30px !important;
+}
+
+@media screen and (min-width: 768px) {
+  header.navbar {
+    padding: inherit !important;
+  }
+}
+
+.navbar-nav .dropdown-menu .dropdown-item.active > a,
+.navbar-nav .dropdown-menu .dropdown-item:active > a {
+  color: #fff !important;
+}
+
+.navbar-light .navbar-nav ul.dropdown-menu li.active > a.active {
+  color: #fff !important;
+}
+
+header.navbar-expand-md .nav-item > a:hover,
+header.navbar-expand-md .nav-item > a:focus {
+  color: #00a0df;
+}
+
+header.navbar-expand-md .navbar-toggler .navbar-toggler-icon {
+  background-image: url("/themes/custom/blue_harvest/images/icons/menu-toggle-shield.svg");
+}

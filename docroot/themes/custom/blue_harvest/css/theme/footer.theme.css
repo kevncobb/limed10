@@ -1,0 +1,115 @@
+.font-size-lg {
+  font-size: 1.375rem;
+}
+
+.font-size-sm {
+  font-size: 0.9625rem;
+}
+
+/* Insert your blue_harvest footer custom SASS styling. */
+.footer-wrapper {
+  color: white;
+  background-color: #003c71;
+}
+
+.footer-wrapper .footer_copyright {
+  display: inline-block;
+  padding-right: 1rem;
+  border-right: thin solid white;
+}
+
+.footer-wrapper .footer {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+
+.footer-wrapper .footer section.region-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 992px) {
+  .footer-wrapper .footer section.region-footer {
+    -webkit-flex-flow: row;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -ms-flex-flow: row;
+    flex-flow: row;
+  }
+}
+
+.footer-wrapper .footer section.region-footer div[id$="-copyright"] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 1rem 1rem 0 1rem;
+  font-size: 0.75rem;
+}
+
+.footer-wrapper .footer section.region-footer .menu--footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 1rem 0;
+  font-size: 0.75rem;
+}
+
+.footer-wrapper .footer section.region-footer .menu--footer ul.nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  -webkit-box-pack: left;
+  justify-content: left;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.footer-wrapper .footer section.region-footer .menu--footer ul.nav li {
+  padding: 0 1rem;
+}
+
+.footer-wrapper .footer section.region-footer .menu--footer ul.nav li a {
+  color: white;
+}

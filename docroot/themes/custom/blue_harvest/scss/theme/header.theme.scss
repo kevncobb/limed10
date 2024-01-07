@@ -1,0 +1,42 @@
+// blue_harvest header styling.
+// -----------------------------------------------------------------------------
+@import "../../node_modules/bootstrap/scss/functions";  // Bootstrap functions.
+@import "../../node_modules/bootstrap/scss/mixins";     // Bootstrap mixins.
+@import "../variables";                   // blue_harvest variables.
+@import "../mixins";                      // blue_harvest mixins.
+// -----------------------------------------------------------------------------
+
+/* Insert your blue_harvest header custom SASS styling. */
+header.navbar {
+  padding: 0 30px !important;
+  @media screen and (min-width: 768px) {
+    padding: inherit !important;
+  }
+}
+.navbar-nav .dropdown-menu {
+  .dropdown-item.active > a, .dropdown-item:active > a {
+    color: #fff !important;
+  }
+}
+.navbar-light .navbar-nav ul.dropdown-menu li.active > a.active  {
+  color: #fff !important;
+}
+
+header.navbar-expand-md {
+  .nav-item > a {
+    &:hover, &:focus {
+      color: $teal;
+    }
+  }
+  .navbar-toggler {
+    &.collapsed {
+      .navbar-toggler-icon {
+        //background-image: url("/themes/custom/blue_harvest/images/icons/menu-toggle-shield.svg");
+      }
+    }
+    .navbar-toggler-icon {
+      //background-image: url("/themes/custom/blue_harvest/images/icons/menu-toggle-shield-x.svg");
+      background-image: url("/themes/custom/blue_harvest/images/icons/menu-toggle-shield.svg");
+    }
+  }
+}

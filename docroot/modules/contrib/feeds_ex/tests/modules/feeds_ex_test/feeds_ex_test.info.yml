@@ -1,0 +1,6 @@
+name: 'Feeds extensible parser tests'
+type: module
+description: 'Provides a test parser.'
+package: Testing
+dependencies:
+  - feeds_ex:feeds_ex

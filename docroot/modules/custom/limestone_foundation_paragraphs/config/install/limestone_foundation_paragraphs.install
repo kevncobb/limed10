@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Entity update test module (entity_update_tests).
+ *
+ * This file provide install/uninstall/update tasks.
+ */
+
+use Drupal\Core\Utility\UpdateException;
+use Drupal\entity_update\EntityUpdate;
+
+/**
+ * Update 01 - Example for update an entity type 'entity_update_tests_cnt'.
+ */
+function limestone_foundation_paragraphs_update_9305()
+{
+
+  // Entity checking process : Get current entities list.
+  $ids_old = \Drupal::entityQuery('entity_update_tests_cnt')->execute();
+
+  // Get entity type.
+  $entity_type = \Drupal::entityTypeManager()->getStorage('entity_update_tests_cnt');
+  // Make Update Using safeUpdateMain methode.
+  if (!EntityUpdate::safeUpdateMain($entity_type->getEntityType())) {
+    // Your codes if update failed.
+    throw new UpdateException('Entity update failed.');
+  }
+
+  // Entity checking process : Compare with new list entities list.
+  $ids_new = \Drupal::entityQuery('entity_update_tests_cnt')->execute();
+
+  // Compare two lists.
+  $result = array_diff($ids_old, $ids_new);
+  if (!empty($result)) {
+    // Your codes if update checking failed.
+    throw new UpdateException('Entity update checking failed.');
+  }
+
+  return "Entity update success";
+}

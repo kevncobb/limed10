@@ -1,0 +1,224 @@
+{
+  "name": "vardot/varbase-project",
+  "description": "Project template for Varbase distribution.",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Vardot",
+      "homepage": "https://github.com/vardot",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/varbase",
+    "source": "http://cgit.drupalcode.org/varbase"
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  },
+  "require": {
+    "composer/installers": "~2.0",
+    "oomphinc/composer-installers-extender": "~2.0",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core-composer-scaffold": "^9 || ^10",
+    "drupal/core-project-message": "^9 || ^10",
+    "webflo/drupal-finder": "~1.0",
+    "vardot/varbase": "9.0.x-dev",
+    "vardot/varbase-updater": "2.x-dev",
+    "drupal/upgrade_status": "^3.13",
+    "drupal/search_api_solr": "^4.2",
+    "drupal/insert_block": "^1.0@beta",
+    "drupal/webform_analysis": "^1.0@beta",
+    "drupal/twig_tweak": "^3.2",
+    "drupal/viewsreference": "2.x-dev@dev",
+    "drupal/addtocal": "^1.1",
+    "drupal/chosen": "^3.0",
+    "drupal/colorbox_field_formatter": "^2.0",
+    "drupal/ckeditor_media_embed": "^1.11",
+    "drupal/csv_serialization": "^2.0",
+    "drupal/expand_collapse_formatter": "^2.0",
+    "drupal/google_analytics_reports": "^3.0@RC",
+    "drupal/sendgrid_integration": "^2.1",
+    "drupal/yoast_seo": "^1.7",
+    "pantheon-systems/terminus-drupal-console-plugin": "^1.1",
+    "drupal/field_formatter": "3.x-dev@dev",
+    "drupal/entity_update": "2.0.x-dev@dev",
+    "drupal/feeds_ex": "1.x-dev@dev",
+    "drupal/feeds": "3.x-dev@dev",
+    "drupal/search_api_pantheon": "^8.1",
+    "pantheon-systems/search_api_pantheon": "^8",
+    "drupal/devel_php": "1.x-dev@dev",
+    "drupal/search_api_page": "1.x-dev@dev",
+    "drupal/search_api": "^1.23",
+    "drupal/draggableviews": "^2.0",
+    "drupal/image_effects": "^3.2",
+    "drupal/minifyhtml": "^1.13",
+    "drupal/robotstxt": "^1.4",
+    "drupal/simple_sitemap": "4.x-dev@dev",
+    "drupal/symfony_mailer": "1.x-dev@dev",
+    "drupal/imagemagick": "^3.3",
+    "drupal/imageapi_optimize_webp": "^2.0@beta",
+    "drupal/book_tree_menu": "^2.0",
+    "drupal/pdf": "1.x-dev@dev",
+    "drupal/aggregator": "^1.0",
+    "drupal/twig_field_value": "^2.0",
+    "drupal/inline_entity_form": "^1.0@RC",
+    "drupal/field_token_value": "^3.0",
+    "drupal/fullcalendar_view": "^5.1",
+    "drupal/menu_item_extras": "^2.17",
+    "drupal/name": "^1.0@RC",
+    "drupal/pantheon_advanced_page_cache": "^2.1",
+    "drupal/entity_browser": "^2.9",
+    "drupal/views_role_based_global_text": "^3.1",
+    "drupal/zurb_foundation": "9.x-dev@dev",
+    "drupal/search404": "^2.1",
+    "drupal/stable": "^2.0",
+    "drupal/tvi": "^2.0@alpha",
+    "drupal/twigsuggest": "^1.0@RC",
+    "drupal/ckeditor_paste_filter": "^1.1",
+    "drupal/bootstrap": "^3.28",
+    "drupal/admin_toolbar": "^3.4",
+    "drupal/addtoany": "^1.21",
+    "drupal/linkit": "^6.0",
+    "drupal/image_widget_crop": "^2.4",
+    "drupal/masonry": "^4.0",
+    "drupal/masonry_views": "^4.0",
+    "drupal/panels": "^4.7"
+  },
+  "require-dev": {
+    "drupal/core-dev": "~9.0 || ~10.0",
+    "drush/drush": "~11.0"
+  },
+  "config": {
+    "bin-dir": "bin/",
+    "secure-http": false,
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "drupal/core": "dist"
+    },
+    "allow-plugins": {
+      "composer/installers": true,
+      "cweagans/composer-patches": true,
+      "oomphinc/composer-installers-extender": true,
+      "drupal/core-composer-scaffold": true,
+      "drupal/core-project-message": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "vardot/varbase-updater": true,
+      "drupal/console-extend-plugin": true
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "Varbase\\composer\\ScriptHandler::createRequiredFiles",
+      "Varbase\\composer\\ScriptHandler::removeGitDirectories"
+    ],
+    "post-update-cmd": [
+      "Varbase\\composer\\ScriptHandler::createRequiredFiles",
+      "Varbase\\composer\\ScriptHandler::removeGitDirectories"
+    ],
+    "post-drupal-scaffold-cmd": ["Varbase\\composer\\ScriptHandler::postDrupalScaffoldProcedure"]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-9.0.x": "9.0.x-dev"
+    },
+    "drupal-core-project-message": {
+        "include-keys": ["homepage", "support"],
+        "post-create-project-cmd-message": [
+            "<bg=blue;fg=white>                                                           </>",
+            "<bg=blue;fg=white>  Congratulations, you have installed the Varbase codebase </>",
+            "<bg=blue;fg=white>  from the vardot/varbase-project template!                </>",
+            "<bg=blue;fg=white>                                                           </>",
+            "",
+            "<bg=yellow;fg=black>Next steps</>:",
+
+            "  * Install the site: https://www.drupal.org/docs/installing-drupal",
+            "  * Read the user guide: https://docs.varbase.vardot.com",
+            "  * Get support: https://www.vardot.com/en/form/get-support-varbase",
+            "  * Join Our Slack Team for Feedback and Support:",
+            "      http://slack.varbase.vardot.com",
+            "  * Remove the plugin that prints this message:",
+            "      composer remove drupal/core-project-message"
+        ]
+    },
+    "drupal-scaffold": {
+      "allowed-packages": [
+        "drupal/core",
+        "vardot/varbase"
+      ],
+      "gitignore": true,
+      "locations": {
+        "web-root": "./docroot"
+      },
+      "file-mapping": {
+        "[web-root]/sites/default/default.services.yml": {
+          "mode": "replace",
+          "overwrite": false,
+          "path": "docroot/core/assets/scaffold/files/default.services.yml"
+        },
+        "[web-root]/sites/default/default.settings.php": {
+          "mode": "replace",
+          "overwrite": false,
+          "path": "docroot/core/assets/scaffold/files/default.settings.php"
+        }
+      }
+    },
+    "installer-paths": {
+      "docroot/core": ["type:drupal-core"],
+      "docroot/profiles/{$name}": ["type:drupal-profile"],
+      "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+      "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+      "docroot/libraries/slick": ["npm-asset/slick-carousel"],
+      "docroot/libraries/ace": ["npm-asset/ace-builds"],
+      "docroot/libraries/jquery-ui-touch-punch": ["bower-asset/jqueryui-touch-punch"],
+      "docroot/libraries/swagger-ui/dist": ["npm-asset/swagger-ui-dist"],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ],
+      "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"],
+      "drush/contrib/{$name}": ["type:drupal-drush"]
+    },
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "drupal-libraries": {
+      "library-directory": "docroot/libraries",
+      "libraries": [
+        {"name": "objectfitpolyfill", "package": "bower-asset/objectfitpolyfill"},
+        {"name": "chartjs", "package": "bower-asset/chartjs"},
+        {"name": "c3","package": "bower-asset/c3"},
+        {"name": "d3", "package": "bower-asset/d3"},
+        {"name": "dropzone","package": "npm-asset/dropzone"},
+        {"name": "blazy", "package": "npm-asset/blazy"},
+        {"name": "slick", "package": "npm-asset/slick-carousel"},
+        {"name": "ace", "package": "npm-asset/ace-builds"},
+        {"name": "jquery-ui-touch-punch", "package": "bower-asset/jqueryui-touch-punch"},
+        {"name": "imagesloaded", "package": "npm-asset/imagesloaded"},
+        {"name": "swagger-ui", "package": "npm-asset/swagger-ui-dist"}
+      ]
+    },
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "patches": {  }
+  }
+}

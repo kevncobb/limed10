@@ -1,0 +1,90 @@
+@media print {
+  .main-content {
+    font-size: 80%;
+  }
+  /* Always insert a page break after the element */
+  .always-page-break-after,
+  .always-pba {
+    page-break-after: always;
+  }
+  /* Avoid page break after the element (if possible) */
+  .avoid-page-break-after,
+  .avoid-pba {
+    page-break-after: avoid;
+  }
+  /* Insert page breaks after the element so that the next page is formatted as a left page */
+  .left-page-break-after,
+  .left-pba {
+    page-break-after: left;
+  }
+  /* Insert page breaks after the element so that the next page is formatted as a right page */
+  .right-page-break-after,
+  .right-pba {
+    page-break-after: right;
+  }
+  /* Always insert a page break before the element */
+  .always-page-break-before,
+  .always-pbb {
+    page-break-before: always;
+  }
+  /* Avoid page break before the element (if possible) */
+  .avoid-page-break-before,
+  .avoid-pbb {
+    page-break-before: avoid;
+  }
+  /* Insert page breaks before the element so that the next page is formatted as a left page */
+  .left-page-break-before,
+  .left-pbb {
+    page-break-before: left;
+  }
+  /* Insert page breaks before the element so that the next page is formatted as a right page */
+  .right-page-break-before,
+  .right-pbb {
+    page-break-before: right;
+  }
+  /* Avoid page break inside the element (if possible) */
+  .avoid-page-break-inside,
+  .avoid-pbi {
+    width: 3;
+    page-break-inside: avoid;
+  }
+  /* Hide link's href URL in print. */
+  a[href]:after {
+    content: none !important;
+  }
+  *,
+  *:before,
+  *:after {
+    color: #000 !important;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .group-headers-bar > .view-content > h3 {
+    margin-top: 1rem;
+    padding: 7px 15px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #efefef !important;
+    background: #435f7b;
+    -webkit-box-shadow: inset #435f7b 190px 190px 250px !important;
+    box-shadow: inset #435f7b 190px 190px 250px !important;
+    font-size: 2.1rem;
+    font-weight: 300;
+    -webkit-print-color-adjust: exact !important;
+  }
+  .group-headers-bar > .view-content > h3 strong {
+    color: #efefef !important;
+    -webkit-box-shadow: inset #435f7b 190px 190px 250px !important;
+    box-shadow: inset #435f7b 190px 190px 250px !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+  .pdf-view .views-row {
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .pdf-view .views-row:last-child {
+    border-bottom: none;
+  }
+}

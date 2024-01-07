@@ -1,0 +1,150 @@
+// Icons component style.
+// -----------------------------------------------------------------------------
+@import "../../node_modules/bootstrap/scss/functions";  // Bootstrap functions.
+@import "../../node_modules/bootstrap/scss/mixins";     // Bootstrap mixins.
+@import "../variables";                   // blue_harvest variables.
+@import "../mixins";                      // blue_harvest mixins.
+// -----------------------------------------------------------------------------
+
+.facts-and-stats-view {
+  @media (max-width: map-get($grid-breakpoints, "lg")) {
+    .slick__slide {
+      min-height: 300px;
+      .slide__media {
+        height: 100%;
+        width: auto;
+        .media.media--blazy.media--slick.media--ratio.media--ratio--fluid.media--image.is-b-loaded {
+          padding-bottom: 85.25% !important;
+        }
+      }
+      .slide__caption {
+        top: auto;
+        right: 0%;
+        bottom: 0%;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        font-size: 17px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  .slide__media {
+    width: 50%;
+  }
+  .slide__caption {
+    cursor: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    -o-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
+    position: absolute;
+    //top: 4%;
+    right: 4%;
+    //left: auto;
+    color: white;
+    //width: 92%;
+    //height: 92%;
+    background-color: rgba($blue, 0.55);
+    width: 60%;
+    height: 94%;
+    left: 40%;
+    top: auto;
+    bottom: 3%;
+    @media (min-width: map-get($grid-breakpoints, "md")) {
+      width: 60%;
+      height: 98%;
+      left: 40%;
+      top: auto;
+      bottom: 1%;
+      background-color: rgba($blue, 0.9);
+    }
+    .slide__description {
+      position: absolute;
+      top: 50%;
+      right: 52%;
+      transform: translate(50%,-50%);
+      width: 80%;
+      .topic_link {
+        background: #ff6d2c;
+      }
+    }
+  }
+  /*
+  .caption-top {
+    .slide__caption {
+      left: 10%;
+      top: 4%;
+      bottom: auto;
+      @media (min-width: map-get($grid-breakpoints, "sm")) {
+        height: 39%;
+        width: 80%;
+      }
+    }
+  }
+
+  .caption-bottom {
+    .slide__caption {
+
+      left: 5%;
+      top: auto;
+      bottom: 4%;
+      @media (min-width: map-get($grid-breakpoints, "sm")) {
+        height: 35%;
+        width: 90%;
+      }
+    }
+  }
+  .caption-left {
+    .slide__caption {
+      right: auto;
+      left: 5%;
+    }
+  }
+  .caption-bottom-left {
+    .slide__caption {
+
+      left: 5%;
+      top: auto;
+      bottom: 4%;
+      @media (min-width: map-get($grid-breakpoints, "sm")) {
+        height: 30%;
+        width: 60%;
+      }
+    }
+  }
+  .caption-top-left {
+    .slide__caption {
+      bottom: auto;
+      top: 5%;
+      @media (min-width: map-get($grid-breakpoints, "sm")) {
+        width: 70%;
+        height: 40%;
+        left: 5%;
+      }
+    }
+  }
+  .caption-top-right {
+    .slide__caption {
+      bottom: auto;
+      top: 5%;
+      left: auto;
+      right: 5%;
+      @media (min-width: map-get($grid-breakpoints, "sm")) {
+        width: 70%;
+      }
+    }
+  }
+  .caption-orange {
+    .slide__caption {
+      background-color: rgba(255, 109, 44, 0.9);
+      .topic_link {
+        background: $blue;
+      }
+    }
+  }
+  */
+}
+
